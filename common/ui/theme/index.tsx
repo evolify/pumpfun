@@ -30,7 +30,7 @@ export default function Theme({ children }: Props) {
           MuiAppBar: {
             styleOverrides: {
               colorPrimary: {
-                backgroundColor: color("#1976d2", "#2d2d2d")
+                background: color("#1976d2", "#2d2d2d")
               }
             }
           }
