@@ -1,0 +1,7 @@
+:root {
+  background-color: #f7f7f7;
+}
+:root[data-theme="dark"] {
+  background-color: #000;
+  color: #fff;
+}

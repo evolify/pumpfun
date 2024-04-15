@@ -1,0 +1,30 @@
+export interface Coin {
+  complete: boolean
+  created_timestamp: number
+  creator: string
+  description: string
+  hidden?: boolean
+  image_uri: string
+  king_of_the_hill_timestamp: number
+  last_reply: number
+  last_trade_timestamp: number
+  market_cap: number
+  market_id: number
+  metadata_uri: string
+  mint: string
+  name: string
+  nsfw: boolean
+  profile_image?: string
+  raydium_pool?: string
+  reply_count: number
+  show_name: boolean
+  symbol: string
+  total_supply: number
+  twitter: string
+  telegram?: string
+  website?: string
+  usd_market_cap: number
+  username: string
+  virtual_sol_reserves: number
+  virtual_token_reserves: number
+}
