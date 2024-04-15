@@ -36,10 +36,10 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
-        name: "Next DEX",
-        short_name: "NEX",
-        description: "Next generation DEX for eth、bsc、arb...",
-        theme_color: "#000000",
+        name: "Pump fun",
+        short_name: "Pump",
+        description: "Pump fun tools",
+        theme_color: "#1976d2",
         start_url: "index.html",
         icons: [
           {

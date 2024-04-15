@@ -58,7 +58,7 @@ function renderAction(
 
 function CoinCard({ data }: Props) {
   return (
-    <Card variant="outlined" sx={{ borderRadius: 4, mb: 1.5 }}>
+    <Card variant="outlined" sx={{ borderRadius: 4, flexGrow: 1, minWidth: 360, maxWidth: 720 }}>
       <Stack direction="row" position="relative">
         <CardMedia
           component="img"
@@ -112,7 +112,7 @@ export default function List() {
     return <Loading />
   }
   return (
-    <Stack p={1.5}>
+    <Stack p={1.5} direction="row" flexWrap="wrap" gap={1.5}>
       {list.map(t => (
         <CoinCard key={t.mint} data={t} />
       ))}
