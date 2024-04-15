@@ -1,9 +1,16 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material"
+import {
+  AppBar,
+  CircularProgress,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material"
 import { Menu, Refresh } from "@mui/icons-material"
-import { load } from "../store"
+import { load, use } from "../store"
 
 export default function Header() {
-  function refresh(){
+  const { loading } = use()
+  function refresh() {
     load()
   }
   return (
@@ -18,16 +25,22 @@ export default function Header() {
         >
           <Menu />
         </IconButton>
-        <Typography variant="h6" sx={{flexGrow: 1}}>PumpFun</Typography>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          onClick={refresh}
-        >
-          <Refresh />
-        </IconButton>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          PumpFun
+        </Typography>
+        {loading ? (
+          <CircularProgress color="inherit" size={14} />
+        ) : (
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={refresh}
+          >
+            <Refresh />
+          </IconButton>
+        )}
       </Toolbar>
     </AppBar>
   )
