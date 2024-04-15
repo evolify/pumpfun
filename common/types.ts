@@ -20,7 +20,7 @@ export interface Coin {
   show_name: boolean
   symbol: string
   total_supply: number
-  twitter: string
+  twitter?: string
   telegram?: string
   website?: string
   usd_market_cap: number

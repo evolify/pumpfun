@@ -30,11 +30,10 @@ export function ellipsisAddr(addr = "") {
   return addr.substring(0, 5) + "..." + addr.substr(-4)
 }
 
-export function toPumpBot(mint: string){
-  copy(mint, false)
-  window.open( `tg://resolve?domain=pump_fun_bot`)
+export function pumpBot(){
+  return "tg://resolve?domain=pump_fun_bot"
 }
 
-export function toPumpFun(mint: string){
-  window.open(`https://pump.fun/${mint}`)
+export function pumpFun(mint: string){
+  return `https://pump.fun/${mint}`
 }
