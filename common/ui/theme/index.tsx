@@ -26,6 +26,15 @@ export default function Theme({ children }: Props) {
             cardBg: color("#1E88E5", "#121212"),
           },
         },
+        components: {
+          MuiAppBar: {
+            styleOverrides: {
+              colorPrimary: {
+                backgroundColor: color("#1976d2", "#2d2d2d")
+              }
+            }
+          }
+        }
       }),
     [darkMode]
   )
