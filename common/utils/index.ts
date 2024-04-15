@@ -1,7 +1,7 @@
 import { info } from "common/ui/popover/notify"
 import { createRoot } from "react-dom/client"
 
-export function copy(str: string) {
+export function copy(str: string, notify = true) {
   const input = document.createElement("input")
   input.value = str
   input.style.position = "fixed"
@@ -31,7 +31,8 @@ export function ellipsisAddr(addr = "") {
 }
 
 export function toPumpBot(mint: string){
-  window.open( `tg://resolve?domain=pump_fun_bot&start=ca_${mint}`)
+  copy(mint, false)
+  window.open( `tg://resolve?domain=pump_fun_bot`)
 }
 
 export function toPumpFun(mint: string){
