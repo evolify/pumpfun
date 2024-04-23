@@ -31,7 +31,7 @@ export function ellipsisAddr(addr = "") {
 }
 
 export function pumpBot(){
-  return "tg://resolve?domain=pump_fun_bot"
+  return "tg://resolve?domain=pump_fun_bot&start=r_1657098026"
 }
 
 export function pumpFun(mint: string){
