@@ -12,10 +12,10 @@ Tools for pump.fun
 
 ## Screenshots
 
-<center style="display:inline-block">
+<div>
   <img src="https://cdn.jsdelivr.net/gh/evolify/files/img/202404231034287.PNG" alt="light" width="49%">
   <img src="https://cdn.jsdelivr.net/gh/evolify/files/img/202404231034289.PNG" alt="dark" width="49%">
-</center>
+</div>
 
 
 <center>
