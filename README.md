@@ -6,7 +6,7 @@ Tools for pump.fun
 - Sort by Market Cap, Quickly find the easiest one to complete
 - Filter small Market Cap tokens (current only show mc > 15k)
 - Show social links(Twitter、Telegram、Website、Pumpfun link)
-- Fast swap with PumpPill(pumpfunbot) in one click
+- Fast swap with Bonkbot、Pepeboost、GMGN Sniper Bot in one click
 - Support Mobile and PC, Light and Dark Mode
 - Support PWA, Add it to desktop for better experience
 
@@ -23,5 +23,7 @@ Tools for pump.fun
 </center>
 
 ## TODO
-- [ ] Improve loading speed
+- [x] Improve loading speed
+- [x] Support Bonkbot、Pepeboost、GMGN Sniper Bot
 - [ ] Add some filter options
+- [ ] Show more info

@@ -1,3 +1,4 @@
+"use client"
 import { Alert, Slide } from "@mui/material"
 import { createRoot, Root } from "react-dom/client"
 

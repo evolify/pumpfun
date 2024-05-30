@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "dev": "vite dev",
-    "preview": "vite preview",
-    "build": "vite build"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
   },
   "repository": {
     "type": "git",
@@ -21,26 +21,29 @@
   },
   "homepage": "https://github.com/evolify/pumpfun#readme",
   "dependencies": {
-    "@emotion/cache": "latest",
+    "@emotion/cache": "^11.11.0",
     "@emotion/react": "latest",
     "@emotion/server": "latest",
     "@emotion/styled": "latest",
     "@evolify/tiny": "^0.2.1",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "@mui/material-nextjs": "^5.15.11",
     "@vercel/analytics": "latest",
     "@vercel/speed-insights": "latest",
     "dayjs": "latest",
+    "next": "latest",
     "react": "latest",
     "react-dom": "latest"
   },
   "devDependencies": {
+    "@types/node": "^20.12.13",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "@vitejs/plugin-react": "latest",
+    "@unocss/postcss": "^0.60.0",
+    "postcss": "^8.4.38",
     "sass": "latest",
     "typescript": "latest",
-    "vite": "latest",
-    "vite-plugin-pwa": "latest"
+    "unocss": "^0.60.0"
   }
 }

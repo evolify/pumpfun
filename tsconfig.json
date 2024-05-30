@@ -1,23 +1,46 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
-    "skipLibCheck": true,
+    "target": "es5",
+    "module": "esnext",
+    "rootDir": "./",
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "lib": [
+      "dom",
+      "es6",
+      "es7"
+    ],
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "baseUrl": "./",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "incremental": true,
     "paths": {
-      "common/*": ["common/*"]
-    }
+      "common/*": [
+        "./common/*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strict": false
   },
-  "include": ["common", "app"]
+  "include": [
+    "common/**/*",
+    "app/**/*",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

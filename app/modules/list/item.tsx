@@ -1,0 +1,170 @@
+"use client"
+import Image from "next/image"
+import {
+  AutoFixHigh,
+  ExpandMore,
+  Home,
+  OpenInBrowser,
+  Telegram,
+  Twitter,
+} from "@mui/icons-material"
+import {
+  Box,
+  Card,
+  CardActions,
+  CardMedia,
+  CircularProgress,
+  IconButton,
+  IconButtonProps,
+  Stack,
+  Typography,
+  styled,
+} from "@mui/material"
+import { PumpCoin } from "common/types"
+import { copy, pumpBot, pumpFun } from "common/utils"
+import { formatAddress, formatMarketCap, formatTime } from "common/utils/format"
+import { open, use } from "app/store"
+
+interface ExpandMoreProps extends IconButtonProps {
+  expand: boolean;
+}
+
+const Expand = styled((props: ExpandMoreProps) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
+
+function renderParam(label: string, value: string, onClick?: () => void) {
+  function click(e: React.MouseEvent){
+    e.stopPropagation()
+    if(onClick){
+      onClick()
+    }
+  }
+  return (
+    <Stack direction="row" onClick={click}>
+      <Typography>{label}:</Typography>
+      <Typography ml="auto">{value}</Typography>
+    </Stack>
+  )
+}
+
+function renderAction(
+  Icon: React.ComponentType,
+  action?: string | (() => void),
+  condition: string | boolean | null = true
+) {
+  if (!Boolean(condition)) {
+    return null
+  }
+  function onClick(e: React.MouseEvent) {
+    e.stopPropagation()
+    if (action) {
+      if (typeof action === "string") {
+        window.open(action)
+      } else {
+        action()
+      }
+    }
+  }
+  return (
+    <IconButton onClick={onClick}>
+      <Icon />
+    </IconButton>
+  )
+}
+
+export default function CoinCard({ data }: { data: PumpCoin }) {
+  const {coin} = use()
+  const selected = coin?.address === data.address
+  function toDetail(){
+    open(data)
+  }
+  return (
+    <Card
+      variant="outlined"
+      sx={{ borderRadius: 4, flexGrow: 1, minWidth: 360, maxWidth: 720 }}
+      onClick={toDetail}
+    >
+      <Stack direction="row" position="relative">
+        <CardMedia>
+          <Image
+            className="h-full aspect-ratio-square"
+            src={data.image_uri}
+            width={150}
+            height={150}
+            objectFit="cover"
+            alt=""
+          />
+        </CardMedia>
+        <Stack width={0} flexGrow={1}>
+          <Stack p={1}>
+            <Stack mb={1} direction="row" alignItems="center">
+              <Typography
+                variant="body1"
+                sx={{
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {data.symbol}
+              </Typography>
+
+              <Box ml="auto" sx={{ position: "relative", display: "inline-flex" }}>
+                <CircularProgress
+                  variant="determinate"
+                  size={28}
+                  value={data.progress * 100}
+                />
+                <Box
+                  sx={{
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    right: 0,
+                    position: "absolute",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography
+                    variant="caption"
+                    component="div"
+                    color="text.secondary"
+                  >{`${Math.round(data.progress * 100)}`}</Typography>
+                </Box>
+              </Box>
+            </Stack>
+            {renderParam("MarketCap", formatMarketCap(+data.usd_market_cap))}
+            {renderParam("Create Time", formatTime(data.created_timestamp))}
+            {renderParam("Mint", formatAddress(data.address), () =>
+              copy(data.address)
+            )}
+          </Stack>
+
+          <CardActions disableSpacing sx={{ p: 0, mt: "auto" }}>
+            {renderAction(Twitter, data.twitter, data.twitter)}
+            {renderAction(Telegram, data.telegram, data.telegram)}
+            {renderAction(Home, data.website, data.website)}
+            {renderAction(AutoFixHigh, () => {
+              copy(data.address)
+              window.open(pumpBot())
+            })}
+            {/* {renderAction(OpenInBrowser, pumpFun(data.address))} */}
+            <Expand expand={selected}>
+              <ExpandMore />
+            </Expand>
+          </CardActions>
+        </Stack>
+      </Stack>
+    </Card>
+  )
+}

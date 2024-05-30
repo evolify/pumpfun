@@ -1,3 +1,4 @@
+"use client"
 import { info } from "common/ui/popover/notify"
 import { createRoot } from "react-dom/client"
 
@@ -32,6 +33,18 @@ export function ellipsisAddr(addr = "") {
 
 export function pumpBot(){
   return "tg://resolve?domain=pump_fun_bot&start=r_1657098026"
+}
+
+export function bonkbot(addr = ""){
+  return `tg://resolve?domain=bonkbot_bot&start=ref_e0crb_ca_${addr}` 
+}
+
+export function pepeboost(addr = ""){
+  return `tg://resolve?domain=pepeboost_sol05_bot&start=ref_0h70jz_ca_${addr}`
+}
+
+export function gmgnbot(addr = ""){
+  return `tg://resolve?domain=GMGN_sol_bot&start=i_XqhPEmrY_ca_${addr}`
 }
 
 export function pumpFun(mint: string){

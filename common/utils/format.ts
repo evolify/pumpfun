@@ -8,9 +8,13 @@ export function formatMarketCap(val: number){
 }
 
 export function formatTime(time: number){
-  return dayjs(time).format("MM-DD HH:mm")
+  return dayjs(time * 1000).format("MM-DD HH:mm")
 }
 
 export function formatAddress(addr: string){
   return addr.substring(0, 5) + "..." + addr.substr(-4)
+}
+
+export function formatPrice(price: number){
+  return price.toFixed(8)
 }
