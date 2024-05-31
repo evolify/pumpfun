@@ -15,3 +15,5 @@ export default async function App() {
       </Stack>
   )
 }
+
+export const dynamic = 'force-dynamic'
