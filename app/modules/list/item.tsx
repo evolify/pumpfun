@@ -1,16 +1,17 @@
 "use client"
 import Image from "next/image"
 import {
-  AutoFixHigh,
+  ContentCopy,
   ExpandMore,
   Home,
-  OpenInBrowser,
+  Public,
   Telegram,
   Twitter,
 } from "@mui/icons-material"
 import {
   Box,
   Card,
+  CardActionArea,
   CardActions,
   CardMedia,
   CircularProgress,
@@ -21,7 +22,7 @@ import {
   styled,
 } from "@mui/material"
 import { PumpCoin } from "common/types"
-import { copy, pumpBot, pumpFun } from "common/utils"
+import { copy, pumpFun } from "common/utils"
 import { formatAddress, formatMarketCap, formatTime } from "common/utils/format"
 import { open, use } from "app/store"
 
@@ -40,15 +41,9 @@ const Expand = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-function renderParam(label: string, value: string, onClick?: () => void) {
-  function click(e: React.MouseEvent){
-    e.stopPropagation()
-    if(onClick){
-      onClick()
-    }
-  }
+function renderParam(label: string, value: string) {
   return (
-    <Stack direction="row" onClick={click}>
+    <Stack direction="row">
       <Typography>{label}:</Typography>
       <Typography ml="auto">{value}</Typography>
     </Stack>
@@ -145,20 +140,14 @@ export default function CoinCard({ data }: { data: PumpCoin }) {
             </Stack>
             {renderParam("MarketCap", formatMarketCap(+data.usd_market_cap))}
             {renderParam("Create Time", formatTime(data.created_timestamp))}
-            {renderParam("Mint", formatAddress(data.address), () =>
-              copy(data.address)
-            )}
+            {renderParam("Address", formatAddress(data.address))}
           </Stack>
-
           <CardActions disableSpacing sx={{ p: 0, mt: "auto" }}>
+            {renderAction(Public, pumpFun(data.address), true)}
             {renderAction(Twitter, data.twitter, data.twitter)}
             {renderAction(Telegram, data.telegram, data.telegram)}
             {renderAction(Home, data.website, data.website)}
-            {renderAction(AutoFixHigh, () => {
-              copy(data.address)
-              window.open(pumpBot())
-            })}
-            {/* {renderAction(OpenInBrowser, pumpFun(data.address))} */}
+            {renderAction(ContentCopy, ()=>copy(data.address), true)}
             <Expand expand={selected}>
               <ExpandMore />
             </Expand>

@@ -13,7 +13,11 @@
     "lib": [
       "dom",
       "es6",
-      "es7"
+      "es7",
+      "WebWorker"
+    ],
+    "types": [
+      "@serwist/next/typings"
     ],
     "experimentalDecorators": true,
     "allowJs": true,

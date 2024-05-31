@@ -29,6 +29,7 @@
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
     "@mui/material-nextjs": "^5.15.11",
+    "@serwist/next": "^9.0.2",
     "@vercel/analytics": "latest",
     "@vercel/speed-insights": "latest",
     "dayjs": "latest",
@@ -43,6 +44,7 @@
     "@unocss/postcss": "^0.60.0",
     "postcss": "^8.4.38",
     "sass": "latest",
+    "serwist": "^9.0.2",
     "typescript": "latest",
     "unocss": "^0.60.0"
   }

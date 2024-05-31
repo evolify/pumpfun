@@ -1,0 +1,16 @@
+{
+  "name": "Dump Fun",
+  "short_name": "DumpFun",
+  "icons": [
+    {
+      "src": "/icon.jpeg",
+      "sizes": "120x120",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1976d2",
+  "background_color": "#1976d2",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
