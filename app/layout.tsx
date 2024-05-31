@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter"
+import { GoogleAnalytics } from '@next/third-parties/google'
 import Theme from "common/ui/theme/index"
 import "common/styles/global.css"
 
@@ -72,6 +73,7 @@ export default function MyApp({ children }: Props) {
         <SpeedInsights />
         <Analytics />
       </body>
+      <GoogleAnalytics gaId="G-DD7JD1MCSG" />
     </html>
   )
 }

@@ -9,6 +9,7 @@ specifiers:
   '@mui/icons-material': latest
   '@mui/material': latest
   '@mui/material-nextjs': ^5.15.11
+  '@next/third-parties': ^14.2.3
   '@serwist/next': ^9.0.2
   '@types/node': ^20.12.13
   '@types/react': latest
@@ -35,6 +36,7 @@ dependencies:
   '@mui/icons-material': 5.15.19_jujwktqnp5txusco4pojzmsbj4
   '@mui/material': 5.15.19_2ydye2ssgie5txqpzjyz7x4tnm
   '@mui/material-nextjs': 5.15.11_2yo6omvz2fvj3qtfxq6fzmlgwy
+  '@next/third-parties': 14.2.3_next@14.2.3+react@18.3.1
   '@serwist/next': 9.0.2_enjq7hkaymw4sgl2is7f55g6e4
   '@vercel/analytics': 1.3.1_next@14.2.3+react@18.3.1
   '@vercel/speed-insights': 1.0.11_next@14.2.3+react@18.3.1
@@ -902,6 +904,17 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@next/third-parties/14.2.3_next@14.2.3+react@18.3.1:
+    resolution: {integrity: sha512-j4E2xBSsEZq4VX2pVm3LpGltSwCxETic6glJWfHyYQvpoMdplCAYrQKpF+E9Gg3jfsrfmRAIdTE11m+biBCx1Q==}
+    peerDependencies:
+      next: ^13.0.0 || ^14.0.0
+      react: ^18.2.0
+    dependencies:
+      next: 14.2.3_glywe3udsza2qcn4c7hoan7xru
+      react: 18.3.1
+      third-party-capital: 1.0.20
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2651,6 +2664,10 @@ packages:
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: false
+
+  /third-party-capital/1.0.20:
+    resolution: {integrity: sha512-oB7yIimd8SuGptespDAZnNkzIz+NWaJCu2RMsbs4Wmp9zSDUM8Nhi3s2OOcqYuv3mN4hitXc8DVx+LyUmbUDiA==}
     dev: false
 
   /through/2.3.8:
