@@ -1,10 +1,10 @@
 "use client"
 import Image from "next/image"
 import { Button, Drawer, Stack, Typography } from "@mui/material"
-import { sendGTMEvent } from "@next/third-parties/google"
 import { close, use } from "app/store"
 import { formatMarketCap, formatPrice } from "common/utils/format"
 import { bonkbot } from "common/utils"
+import { click } from "common/utils/track"
 
 export default function Detail() {
   const { coin } = use()
@@ -27,15 +27,12 @@ export default function Detail() {
   }
 
   function renderLink(text: string, link: string) {
-    function click() {
-      sendGTMEvent({
-        event: "click",
-        type: text,
-      })
+    function onClick() {
+      click(text.toLocaleLowerCase().replace(/\s/g, "_"))
       window.open(link)
     }
     return (
-      <Button variant="outlined" onClick={click}>
+      <Button variant="outlined" onClick={onClick}>
         {text}
       </Button>
     )
