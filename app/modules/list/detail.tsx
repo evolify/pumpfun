@@ -9,28 +9,35 @@ import { bonkbot } from "common/utils"
 export default function Detail() {
   const { coin } = use()
 
-  function getSwaps(){
-    return coin.swaps_1m+ "(1m)—" + 
-      coin.swaps_5m+ "(5m)—" +
-      coin.swaps_1h+ "(1h)"
+  function getSwaps() {
+    return (
+      coin.swaps_1m + "(1m)—" + coin.swaps_5m + "(5m)—" + coin.swaps_1h + "(1h)"
+    )
   }
 
-  function getVolume(){
-    return formatMarketCap(coin.volume_1m) + "(1m)—" + 
-      formatMarketCap(coin.volume_5m) + "(5m)—" +
-      formatMarketCap(coin.volume_1h) + "(1h)"
+  function getVolume() {
+    return (
+      formatMarketCap(coin.volume_1m) +
+      "(1m)—" +
+      formatMarketCap(coin.volume_5m) +
+      "(5m)—" +
+      formatMarketCap(coin.volume_1h) +
+      "(1h)"
+    )
   }
 
   function renderLink(text: string, link: string) {
-    sendGTMEvent({
-      event: "click",
-      type: text
-    })
-    function click(){
+    function click() {
+      sendGTMEvent({
+        event: "click",
+        type: text,
+      })
       window.open(link)
     }
     return (
-      <Button variant="outlined" onClick={click} >{text}</Button>
+      <Button variant="outlined" onClick={click}>
+        {text}
+      </Button>
     )
   }
 
@@ -52,22 +59,31 @@ export default function Detail() {
             {coin.name}
           </Typography>
         </Stack>
-        <Typography variant="caption" my={1}>{coin.address}</Typography>
+        <Typography variant="caption" my={1}>
+          {coin.address}
+        </Typography>
         <Stack direction="row" alignItems="center">
           <Typography width={70}>Price:</Typography>
           <Typography>{formatPrice(coin.price)}</Typography>
         </Stack>
         <Stack direction="row" alignItems="center">
           <Typography width={70}>Swaps:</Typography>
-          <Typography> { getSwaps() } </Typography>
+          <Typography> {getSwaps()} </Typography>
         </Stack>
         <Stack direction="row" alignItems="center">
           <Typography width={70}>Volume:</Typography>
-          <Typography> { getVolume() } </Typography>
+          <Typography> {getVolume()} </Typography>
         </Stack>
 
-        <Typography align="center" mt={2} variant="button">Fast Buy</Typography>
-        <Stack mt={1} direction="row" alignItems="center" justifyContent="space-between">
+        <Typography align="center" mt={2} variant="button">
+          Fast Buy
+        </Typography>
+        <Stack
+          mt={1}
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
           {renderLink("Bonkbot", bonkbot(coin.address))}
           {renderLink("Pepeboost", bonkbot(coin.address))}
           {renderLink("GMGN Bot", bonkbot(coin.address))}
