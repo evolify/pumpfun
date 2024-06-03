@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import { Button, Drawer, Stack, Typography } from "@mui/material"
-import { sendGAEvent } from "@next/third-parties/google"
+import { sendGTMEvent } from "@next/third-parties/google"
 import { close, use } from "app/store"
 import { formatMarketCap, formatPrice } from "common/utils/format"
 import { bonkbot } from "common/utils"
@@ -22,7 +22,8 @@ export default function Detail() {
   }
 
   function renderLink(text: string, link: string) {
-    sendGAEvent("event", "click", {
+    sendGTMEvent({
+      event: "click",
       type: text
     })
     function click(){
