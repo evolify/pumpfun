@@ -14,6 +14,7 @@ const withSerwist = withSerwistInit({
 export default withSerwist({
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   images: {
+    unoptimized: true,
     remotePatterns: [{
       hostname: "*"
     }],
