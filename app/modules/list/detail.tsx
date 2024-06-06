@@ -46,7 +46,7 @@ export default function Detail() {
       <Stack p={2} pb={4} maxWidth={600} width="100%" mx="auto">
         <Stack direction="row" alignItems="center">
           <Image
-            style={{ width: 50, height: 50, borderRadius: "50%" }}
+            style={{ width: 10, height: 10, borderRadius: "50%" }}
             src={coin.logo}
             alt=""
             width={100}
