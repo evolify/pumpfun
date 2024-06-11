@@ -8,12 +8,12 @@ import Detail from "./modules/list/detail"
 export default async function App() {
   const data = await getPumpList()
   return (
-      <Stack className="app" pt={7}>
-        <Header />
-        <List data={data} />
-        <Detail />
-      </Stack>
+    <Stack className="app" pt={7}>
+      <Header />
+      <List data={data} />
+      <Detail />
+    </Stack>
   )
 }
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic"

@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image"
 import {
   ContentCopy,
   ExpandMore,
@@ -11,7 +10,6 @@ import {
 import {
   Box,
   Card,
-  CardActionArea,
   CardActions,
   CardMedia,
   CircularProgress,
@@ -27,19 +25,19 @@ import { formatAddress, formatMarketCap, formatTime } from "common/utils/format"
 import { open, use } from "app/store"
 
 interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
+  expand: boolean
 }
 
 const Expand = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
+  const { expand, ...other } = props
+  return <IconButton {...other} />
 })(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform", {
     duration: theme.transitions.duration.shortest,
   }),
-}));
+}))
 
 function renderParam(label: string, value: string) {
   return (
@@ -76,9 +74,9 @@ function renderAction(
 }
 
 export default function CoinCard({ data }: { data: PumpCoin }) {
-  const {coin} = use()
+  const { coin } = use()
   const selected = coin?.address === data.address
-  function toDetail(){
+  function toDetail() {
     open(data)
   }
   return (
@@ -88,16 +86,13 @@ export default function CoinCard({ data }: { data: PumpCoin }) {
       onClick={toDetail}
     >
       <Stack direction="row" position="relative">
-        <CardMedia>
-          <Image
-            className="h-full aspect-ratio-square"
-            src={data.image_uri}
-            width={150}
-            height={150}
-            objectFit="cover"
-            alt=""
-          />
-        </CardMedia>
+        <img
+          className="h-full aspect-ratio-square"
+          src={data.logo}
+          width={152}
+          height={152}
+          alt=""
+        />
         <Stack width={0} flexGrow={1}>
           <Stack p={1}>
             <Stack mb={1} direction="row" alignItems="center">
@@ -112,7 +107,10 @@ export default function CoinCard({ data }: { data: PumpCoin }) {
                 {data.symbol}
               </Typography>
 
-              <Box ml="auto" sx={{ position: "relative", display: "inline-flex" }}>
+              <Box
+                ml="auto"
+                sx={{ position: "relative", display: "inline-flex" }}
+              >
                 <CircularProgress
                   variant="determinate"
                   size={28}
@@ -147,7 +145,7 @@ export default function CoinCard({ data }: { data: PumpCoin }) {
             {renderAction(Twitter, data.twitter, data.twitter)}
             {renderAction(Telegram, data.telegram, data.telegram)}
             {renderAction(Home, data.website, data.website)}
-            {renderAction(ContentCopy, ()=>copy(data.address), true)}
+            {renderAction(ContentCopy, () => copy(data.address), true)}
             <Expand expand={selected}>
               <ExpandMore />
             </Expand>

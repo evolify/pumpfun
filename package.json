@@ -36,17 +36,16 @@
     "dayjs": "latest",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@types/node": "^20.12.13",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "@unocss/postcss": "^0.60.0",
     "postcss": "^8.4.38",
     "sass": "latest",
     "serwist": "^9.0.2",
-    "typescript": "latest",
-    "unocss": "^0.60.0"
+    "typescript": "latest"
   }
 }

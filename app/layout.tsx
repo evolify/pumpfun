@@ -5,8 +5,6 @@ import { SpeedInsights } from "@vercel/speed-insights/react"
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter"
 import { GoogleTagManager } from '@next/third-parties/google'
 import Theme from "common/ui/theme/index"
-import "common/styles/global.css"
-
 
 const APP_NAME = "Dump Fun";
 const APP_DEFAULT_TITLE = "Dump Fun";
@@ -77,5 +75,3 @@ export default function MyApp({ children }: Props) {
     </html>
   )
 }
-
-export const revalidate = 60

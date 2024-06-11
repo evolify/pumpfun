@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 
+export const fetcher = (url: URL | RequestInfo, init?: RequestInit) => fetch(url, init).then((res) => res.json())
+
 type Params = Record<string, string>
 export async function get(url: string, params?: Params) {
   if (params) {

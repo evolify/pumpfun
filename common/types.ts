@@ -56,3 +56,13 @@ export interface PumpCoin {
   volume_24h: number
   website: string
 }
+
+export interface PumpDetail {
+  address: string
+  burn_ratio: string
+  burn_status: string // "burn"
+  creator_percentage: string
+  top_10_holder_rate: number
+  holder_rugged_num?: number
+  holder_token_num?: number
+}

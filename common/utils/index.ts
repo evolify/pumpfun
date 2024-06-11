@@ -3,15 +3,10 @@ import { info } from "common/ui/popover/notify"
 import { createRoot } from "react-dom/client"
 
 export function copy(str: string, notify = true) {
-  const input = document.createElement("input")
-  input.value = str
-  input.style.position = "fixed"
-  input.style.bottom = "-100px"
-  document.body.appendChild(input)
-  input.select()
-  document.execCommand("copy")
-  document.body.removeChild(input)
-  info("Copy to clipboard")
+  navigator.clipboard.writeText(str)
+  if(notify){
+    info("Copy to clipboard")
+  }
 }
 
 export function render(children: React.ReactNode) {
@@ -31,7 +26,7 @@ export function ellipsisAddr(addr = "") {
   return addr.substring(0, 5) + "..." + addr.substr(-4)
 }
 
-export function pumpBot(){
+export function pumpill(addr = ""){
   return "tg://resolve?domain=pump_fun_bot&start=r_1657098026"
 }
 
