@@ -10,8 +10,8 @@ import {
 import {
   Box,
   Card,
+  CardActionArea,
   CardActions,
-  CardMedia,
   CircularProgress,
   IconButton,
   IconButtonProps,
@@ -20,7 +20,7 @@ import {
   styled,
 } from "@mui/material"
 import { PumpCoin } from "common/types"
-import { copy, pumpFun } from "common/utils"
+import { copy, pumpFun, twitter } from "common/utils"
 import { formatAddress, formatMarketCap, formatTime } from "common/utils/format"
 import { open, use } from "app/store"
 
@@ -88,69 +88,72 @@ export default function CoinCard({ data }: { data: PumpCoin }) {
       <Stack direction="row" position="relative">
         <img
           className="h-full aspect-ratio-square"
+          style={{flexShrink: 0}}
           src={data.logo}
           width={152}
           height={152}
           alt=""
         />
-        <Stack width={0} flexGrow={1}>
-          <Stack p={1}>
-            <Stack mb={1} direction="row" alignItems="center">
-              <Typography
-                variant="body1"
-                sx={{
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-              >
-                {data.symbol}
-              </Typography>
-
-              <Box
-                ml="auto"
-                sx={{ position: "relative", display: "inline-flex" }}
-              >
-                <CircularProgress
-                  variant="determinate"
-                  size={28}
-                  value={data.progress * 100}
-                />
-                <Box
+          <Stack width="0" flexGrow={1} >
+            <CardActionArea>
+            <Stack p={1}>
+              <Stack mb={1} direction="row" alignItems="center">
+                <Typography
+                  variant="body1"
                   sx={{
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    right: 0,
-                    position: "absolute",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                   }}
                 >
-                  <Typography
-                    variant="caption"
-                    component="div"
-                    color="text.secondary"
-                  >{`${Math.round(data.progress * 100)}`}</Typography>
+                  {data.symbol}
+                </Typography>
+
+                <Box
+                  ml="auto"
+                  sx={{ position: "relative", display: "inline-flex" }}
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    size={28}
+                    value={data.progress * 100}
+                  />
+                  <Box
+                    sx={{
+                      top: 0,
+                      left: 0,
+                      bottom: 0,
+                      right: 0,
+                      position: "absolute",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="caption"
+                      component="div"
+                      color="text.secondary"
+                    >{`${Math.round(data.progress * 100)}`}</Typography>
+                  </Box>
                 </Box>
-              </Box>
+              </Stack>
+              {renderParam("MarketCap", formatMarketCap(+data.usd_market_cap))}
+              {renderParam("Create Time", formatTime(data.created_timestamp))}
+              {renderParam("Address", formatAddress(data.address))}
             </Stack>
-            {renderParam("MarketCap", formatMarketCap(+data.usd_market_cap))}
-            {renderParam("Create Time", formatTime(data.created_timestamp))}
-            {renderParam("Address", formatAddress(data.address))}
+            </CardActionArea>
+            <CardActions disableSpacing sx={{ p: 0, mt: "auto" }}>
+              {renderAction(Public, pumpFun(data.address), true)}
+              {renderAction(Twitter, twitter(data.twitter), data.twitter)}
+              {renderAction(Telegram, data.telegram, data.telegram)}
+              {renderAction(Home, data.website, data.website)}
+              {renderAction(ContentCopy, () => copy(data.address), true)}
+              <Expand expand={selected}>
+                <ExpandMore />
+              </Expand>
+            </CardActions>
           </Stack>
-          <CardActions disableSpacing sx={{ p: 0, mt: "auto" }}>
-            {renderAction(Public, pumpFun(data.address), true)}
-            {renderAction(Twitter, data.twitter, data.twitter)}
-            {renderAction(Telegram, data.telegram, data.telegram)}
-            {renderAction(Home, data.website, data.website)}
-            {renderAction(ContentCopy, () => copy(data.address), true)}
-            <Expand expand={selected}>
-              <ExpandMore />
-            </Expand>
-          </CardActions>
-        </Stack>
       </Stack>
     </Card>
   )

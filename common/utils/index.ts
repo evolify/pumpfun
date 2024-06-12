@@ -26,6 +26,16 @@ export function ellipsisAddr(addr = "") {
   return addr.substring(0, 5) + "..." + addr.substr(-4)
 }
 
+export function twitter(userName: string){
+  if(!userName){
+    return null
+  }
+  if(userName.startsWith("https:")){
+    return userName
+  }
+  return `https://x.com/${userName}`
+}
+
 export function pumpill(addr = ""){
   return "tg://resolve?domain=pump_fun_bot&start=r_1657098026"
 }

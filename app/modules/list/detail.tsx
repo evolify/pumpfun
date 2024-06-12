@@ -17,7 +17,12 @@ export default function Detail() {
 
   function getSwaps() {
     return (
-      (coin.swaps_1m || 0) + "(1m)—" + (coin.swaps_5m || 0) + "(5m)—" + (coin.swaps_1h || 0) + "(1h)"
+      (coin.swaps_1m || 0) +
+      "(1m)—" +
+      (coin.swaps_5m || 0) +
+      "(5m)—" +
+      (coin.swaps_1h || 0) +
+      "(1h)"
     )
   }
 
@@ -48,27 +53,30 @@ export default function Detail() {
   }
 
   function renderDetails() {
-    if (!data) {
-      return null
-    }
+    const {
+      creator_percentage,
+      top_10_holder_rate,
+      holder_rugged_num,
+      holder_token_num,
+    } = data || {}
     return (
       <>
-        <Divider sx={{mt: 2}} />
+        <Divider sx={{ mt: 2 }} />
         <Typography mt={2} variant="h6">
           Safe Analytics
         </Typography>
         <Stack direction="row" alignItems="center">
           <Typography width={90}>Dev Hold:</Typography>
-          <Typography>{formatPercent(data.creator_percentage)}</Typography>
+          <Typography>{formatPercent(creator_percentage)}</Typography>
         </Stack>
         <Stack direction="row" alignItems="center">
           <Typography width={90}>Top 10 Hold:</Typography>
-          <Typography>{formatPercent(data.top_10_holder_rate)}</Typography>
+          <Typography>{formatPercent(top_10_holder_rate)}</Typography>
         </Stack>
         <Stack direction="row" alignItems="center">
           <Typography width={90}>Rug:</Typography>
           <Typography>
-            {data.holder_rugged_num || 0} / {data.holder_token_num || 0}
+            {holder_rugged_num || 0} / {holder_token_num || 0}
           </Typography>
         </Stack>
       </>
@@ -93,7 +101,7 @@ export default function Detail() {
           </Stack>
         </Stack>
 
-        <Divider sx={{mt: 2}} />
+        <Divider sx={{ mt: 2 }} />
 
         <Typography mt={2} variant="h6">
           Basic Info
@@ -117,7 +125,7 @@ export default function Detail() {
 
         {renderDetails()}
 
-        <Divider sx={{mt: 2}} />
+        <Divider sx={{ mt: 2 }} />
         <Typography mt={2} variant="h6">
           Fast Buy
         </Typography>
