@@ -51,11 +51,11 @@ export interface PumpCoin {
   usd_market_cap: string
   virtual_sol_reserves: string
   virtual_token_reserves: string
-  volume_1h: number
-  volume_1m: number
-  volume_5m: number
-  volume_6h: number
-  volume_24h: number
+  volume_1h: string
+  volume_1m: string
+  volume_5m: string
+  volume_6h: string
+  volume_24h: string
   website: string
 }
 

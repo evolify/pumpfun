@@ -1,6 +1,7 @@
 import dayjs from "dayjs"
 
-export function formatMarketCap(val: number){
+export function formatMarketCap(vol: number | string){
+  const val = Number(vol)
   if(!val){
     return "0"
   }
