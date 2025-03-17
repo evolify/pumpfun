@@ -8,12 +8,9 @@ import {
 } from "common/utils/format"
 import { bonkbot, copy, pumpill } from "common/utils"
 import { click } from "common/utils/track"
-import { usePumpDetail } from "common/hooks/pump"
 
 export default function Detail() {
   const { coin } = use()
-
-  const { data, isLoading } = usePumpDetail(coin?.address)
 
   function getSwaps() {
     return (
@@ -53,12 +50,6 @@ export default function Detail() {
   }
 
   function renderDetails() {
-    const {
-      creator_percentage,
-      top_10_holder_rate,
-      holder_rugged_num,
-      holder_token_num,
-    } = data || {}
     return (
       <>
         <Divider sx={{ mt: 2 }} />
@@ -67,18 +58,18 @@ export default function Detail() {
         </Typography>
         <Stack direction="row" alignItems="center">
           <Typography width={90}>Dev Hold:</Typography>
-          <Typography>{formatPercent(creator_percentage)}</Typography>
+          <Typography>{formatPercent(coin.creator_balance_rate)}</Typography>
         </Stack>
         <Stack direction="row" alignItems="center">
           <Typography width={90}>Top 10 Hold:</Typography>
-          <Typography>{formatPercent(top_10_holder_rate)}</Typography>
+          <Typography>{formatPercent(coin.top_10_holder_rate)}</Typography>
         </Stack>
-        <Stack direction="row" alignItems="center">
+        {/* <Stack direction="row" alignItems="center">
           <Typography width={90}>Rug:</Typography>
           <Typography>
             {holder_rugged_num || 0} / {holder_token_num || 0}
           </Typography>
-        </Stack>
+        </Stack> */}
       </>
     )
   }

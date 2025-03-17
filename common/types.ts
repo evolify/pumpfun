@@ -9,6 +9,8 @@ export interface PumpCoin {
   creator_balance: number
   creator_close: boolean
   creator_token_balance: string
+  creator_balance_rate: string
+  top_10_holder_rate: number
   description: string
   holder_count: number
   id: number
