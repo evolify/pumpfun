@@ -1,7 +1,9 @@
 import { PumpCoin, PumpDetail } from "common/types"
 
+const BASE_URL = 'https://ngapi.vercel.app/api/ngmg'
+
 export async function getPumpList(): Promise<PumpCoin[]>{
-  const res = await fetch("https://gmgn.ai/defi/quotation/v1/rank/sol/pump?limit=50&orderby=progress&direction=desc&pump=true", {cache: "no-store"})
+  const res = await fetch(`${BASE_URL}/list`, {cache: "no-store"})
   const data = await res.json()
   if(data.code === 0){
     return data.data.rank
@@ -10,7 +12,7 @@ export async function getPumpList(): Promise<PumpCoin[]>{
 }
 
 export async function getPumpDetail(addr: string): Promise<PumpDetail>{
-  const res = await fetch(`https://gmgn.ai/defi/quotation/v1/tokens/sol/${addr}`)
+  const res = await fetch(`${BASE_URL}/detail?address=${addr}`)
   const data = await res.json()
   if(data.code === 0){
     return data.data.token
