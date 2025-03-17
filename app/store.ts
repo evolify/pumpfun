@@ -1,6 +1,6 @@
 import Store from "common/utils/store"
 import { PumpCoin } from "common/types"
-import { getPumpList } from "common/api"
+// import { getPumpList } from "common/api"
 
 
 export const { state, update, use } = new Store({
@@ -8,10 +8,10 @@ export const { state, update, use } = new Store({
   list: [] as PumpCoin[]
 })
 
-export async function load() {
-  const list = await getPumpList()
-  update({ list })
-}
+// export async function load() {
+//   const list = await getPumpList()
+//   update({ list })
+// }
 
 export function open(coin: PumpCoin){
   update({coin})

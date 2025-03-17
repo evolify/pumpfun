@@ -25,6 +25,7 @@ specifiers:
   serwist: ^9.0.2
   swr: ^2.2.5
   typescript: latest
+  undici: ^7.5.0
 
 dependencies:
   '@emotion/cache': 11.11.0
@@ -44,6 +45,7 @@ dependencies:
   react: 19.0.0
   react-dom: 19.0.0_react@19.0.0
   swr: 2.2.5_react@19.0.0
+  undici: 7.5.0
 
 devDependencies:
   '@types/node': 20.12.13
@@ -2209,6 +2211,11 @@ packages:
   /undici-types/5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: true
+
+  /undici/7.5.0:
+    resolution: {integrity: sha512-NFQG741e8mJ0fLQk90xKxFdaSM7z4+IQpAgsFI36bCDY9Z2+aXXZjVy2uUksMouWfMI9+w5ejOq5zYYTBCQJDQ==}
+    engines: {node: '>=20.18.1'}
+    dev: false
 
   /universalify/2.0.1:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}

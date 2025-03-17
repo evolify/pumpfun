@@ -48,10 +48,26 @@ export function pepeboost(addr = ""){
   return `tg://resolve?domain=pepeboost_sol05_bot&start=ref_0h70jz_ca_${addr}`
 }
 
+const GMGN_REF = 'XqhPEmrY'
+
 export function gmgnbot(addr = ""){
-  return `tg://resolve?domain=GMGN_sol_bot&start=i_XqhPEmrY_ca_${addr}`
+  // return `tg://resolve?domain=GMGN_sol_bot&start=i_XqhPEmrY_ca_${addr}`
+  return `https://t.me/gmgnaibot?start=i_${GMGN_REF}_sol_${addr}`
+}
+
+export function gmgn(addr = ""){
+  if(addr) {
+    return `https://gmgn.ai/sol/token/${GMGN_REF}_${addr}`
+  }
+  return `https://gmgn.ai/?ref=${GMGN_REF}`
 }
 
 export function pumpFun(mint: string){
   return `https://pump.fun/${mint}`
+}
+
+export function kline(addr: string){
+  if(addr) {
+    return `https://www.gmgn.cc/kline/sol/${addr}`
+  }
 }

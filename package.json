@@ -37,7 +37,8 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "swr": "^2.2.5"
+    "swr": "^2.2.5",
+    "undici": "^7.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.13",

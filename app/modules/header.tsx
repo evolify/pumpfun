@@ -1,13 +1,10 @@
-import {
-  AppBar,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material"
+import { AppBar, IconButton, Toolbar, Typography, } from "@mui/material"
 import { Menu } from "@mui/icons-material"
 import Reload from "./btn-reload"
+import GmgnLink from "./link-gmgn"
 
 export default function Header() {
+
   return (
     <AppBar>
       <Toolbar>
@@ -23,6 +20,7 @@ export default function Header() {
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
           PumpFun
         </Typography>
+        <GmgnLink />
         <Reload />
       </Toolbar>
     </AppBar>
