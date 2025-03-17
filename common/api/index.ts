@@ -1,7 +1,6 @@
 import { PumpCoin, PumpDetail } from "common/types"
 
-// const BASE_URL = 'https://ngapi.vercel.app/api/ngmg'
-const BASE_URL = '/ngmg/api'
+const BASE_URL = 'https://ngapi.vercel.app/api/ngmg'
 
 export async function getPumpList(): Promise<PumpCoin[]>{
   const res = await fetch(`${BASE_URL}/list`, {cache: "no-store"})
