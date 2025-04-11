@@ -55,6 +55,12 @@ export function gmgnbot(addr = ""){
   return `https://t.me/gmgnaibot?start=i_${GMGN_REF}_sol_${addr}`
 }
 
+export function axiom(addr = ""){
+  if(addr) {
+    return `https://axiom.trade/t/${addr}/@gmail`
+  }
+}
+
 export function gmgn(addr = ""){
   if(addr) {
     return `https://gmgn.ai/sol/token/${GMGN_REF}_${addr}`

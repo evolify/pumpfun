@@ -6,7 +6,7 @@ import {
   formatPercent,
   formatPrice,
 } from "common/utils/format"
-import { bonkbot, copy, gmgn, gmgnbot, kline, pepeboost, pumpill } from "common/utils"
+import { axiom, bonkbot, copy, gmgn, gmgnbot, kline, pepeboost, pumpill } from "common/utils"
 import { click } from "common/utils/track"
 
 export default function Detail() {
@@ -130,7 +130,8 @@ export default function Detail() {
           justifyContent="space-between"
         >
           {/* {renderLink("PumPill", pumpill(coin.address), true)} */}
-          {renderLink("Bonkbot", bonkbot(coin.address))}
+          {/* {renderLink("Bonkbot", bonkbot(coin.address))} */}
+          {renderLink("Axiom", axiom(coin.address))}
           {renderLink("Pepeboost", pepeboost(coin.address))}
           {renderLink("GMGN Bot", gmgnbot(coin.address))}
           {renderLink("GMGN", gmgn(coin.address))}
