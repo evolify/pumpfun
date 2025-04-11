@@ -59,6 +59,7 @@ export function axiom(addr = ""){
   if(addr) {
     return `https://axiom.trade/t/${addr}/@gmail`
   }
+  return 'https://axiom.trade/@gmail'
 }
 
 export function gmgn(addr = ""){
