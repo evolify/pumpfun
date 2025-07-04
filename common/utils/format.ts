@@ -1,28 +1,18 @@
-import dayjs from "dayjs"
-
-export function formatMarketCap(vol: number | string){
-  const val = Number(vol)
-  if(!val){
-    return "0"
+export function formatNumber(value: number) {
+  if (value >= 1e9) {
+    return `${(value / 1e9).toFixed(2)}B`
+  } else if (value >= 1e6) {
+    return `${(value / 1e6).toFixed(2)}M`
+  } else if (value >= 1e3) {
+    return `${(value / 1e3).toFixed(2)}K`
+  } else {
+    return `${value.toFixed(2)}`
   }
-  if(val < 1000){
-    return val.toFixed(2)
+}
+
+export function percent(numerator: number, denominator: number) {
+  if (denominator === 0) {
+    return "-"
   }
-  return (val / 1000).toFixed(2) + "k"
-}
-
-export function formatTime(time: number){
-  return dayjs(time * 1000).format("MM-DD HH:mm")
-}
-
-export function formatAddress(addr: string){
-  return addr.substring(0, 5) + "..." + addr.substr(-4)
-}
-
-export function formatPrice(price: number){
-  return price.toFixed(8)
-}
-
-export function formatPercent(val: string | number){
-  return (Number(val) * 100).toFixed(2) + "%"
+  return `${((numerator / denominator) * 100).toFixed(2)}%`
 }
