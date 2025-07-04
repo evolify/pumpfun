@@ -1,52 +1,43 @@
 {
-  "name": "pumpfun",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "dumpfun",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "export": "next export"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/evolify/pumpfun.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/evolify/pumpfun/issues"
-  },
-  "homepage": "https://github.com/evolify/pumpfun#readme",
   "dependencies": {
-    "@emotion/cache": "^11.11.0",
-    "@emotion/react": "latest",
-    "@emotion/server": "latest",
-    "@emotion/styled": "latest",
-    "@evolify/tiny": "^0.2.1",
-    "@mui/icons-material": "latest",
-    "@mui/material": "latest",
-    "@mui/material-nextjs": "^5.15.11",
-    "@next/third-parties": "^14.2.3",
-    "@serwist/next": "^9.0.2",
-    "@vercel/analytics": "latest",
-    "@vercel/speed-insights": "latest",
-    "dayjs": "latest",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "swr": "^2.2.5",
-    "undici": "^7.5.0"
+    "@radix-ui/react-navigation-menu": "^1.2.13",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-toggle": "^1.1.9",
+    "@radix-ui/react-toggle-group": "^1.1.10",
+    "@tailwindcss/vite": "^4.1.11",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.525.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "recharts": "^3.0.2",
+    "swr": "^2.3.4",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
-    "@types/node": "^20.12.13",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "postcss": "^8.4.38",
-    "sass": "latest",
-    "serwist": "^9.0.2",
-    "typescript": "latest"
+    "@eslint/js": "^9.29.0",
+    "@types/node": "^24.0.10",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.5.2",
+    "eslint": "^9.29.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.2.0",
+    "tw-animate-css": "^1.3.4",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.34.1",
+    "vite": "^7.0.0"
   }
 }
