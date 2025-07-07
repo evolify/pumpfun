@@ -1,6 +1,6 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
-import path from "path"
+import path, { resolve } from "path"
 import tailwindcss from "@tailwindcss/vite"
 
 function getInput(...dirs: string[]) {
@@ -23,6 +23,7 @@ export default defineConfig({
     },
   },
   build: {
+    outDir: resolve("dist"),
     rollupOptions: {
       input: getInput("launchpad"),
     },
