@@ -15,6 +15,7 @@ function getInput(...dirs: string[]) {
 
 // https://vite.dev/config/
 export default defineConfig({
+  root: "app/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
