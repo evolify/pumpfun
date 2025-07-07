@@ -1,11 +1,15 @@
 import { useLaunchpadsStats } from "@/hooks/api"
-import LaunchpadsTable from "./modules/table"
+import Header from "@/components/header"
 import Loading from "@/components/loading"
 import Empty from "@/components/empty"
-import Chart from "./modules/chart"
-import Basic from "./modules/basic"
 import { Separator } from "@/components/ui/separator"
-import Header from "@/components/header"
+import { getQuery } from "@/utils"
+import Basic from "./modules/basic"
+import List from "./modules/list"
+
+const launchpad = getQuery("launchpad")
+
+console.log(launchpad)
 
 export default function App() {
   const { data, isLoading } = useLaunchpadsStats()
@@ -23,10 +27,9 @@ export default function App() {
       <Header />
       <Separator />
       <div className="p-5">
-        <Basic data={data} />
-        <Chart data={data} />
+        <Basic />
+        <List />
       </div>
-      <LaunchpadsTable data={data} />
     </div>
   )
 }

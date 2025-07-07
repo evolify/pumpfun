@@ -1,0 +1,24 @@
+:root {
+  --cols: 4;
+}
+.token-list {
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+}
+
+@media screen and (max-width: 1600px) {
+  :root {
+    --cols: 3;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  :root {
+    --cols: 2;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  :root {
+    --cols: 1;
+  }
+}

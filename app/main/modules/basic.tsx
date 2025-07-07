@@ -18,7 +18,7 @@ function renderItem(label: string, value: number) {
 export default function Basic({ data }: Props) {
   const list = useMemo(() => data.slice(0, 5), [data])
   return (
-    <div className="flex flex-row gap-4">
+    <div className="flex flex-row flex-wrap gap-4">
       {list.map(item => (
         <Card key={item.id} className="flex-1 px-3 py-2 gap-0">
           <div className="text-sm text-gray-300">{item.launchpad}</div>
