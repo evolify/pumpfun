@@ -4,8 +4,9 @@ import { getLaunchpad } from "@/utils"
 import { launchpad } from "../utils"
 import Empty from "@/components/empty"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { formatNumber } from "@/utils/format"
 
-function renderItem(label: string, value: number) {
+function renderItem(label: string, value: number | string) {
   return (
     <div className="flex flex-row items-center gap-2">
       <div className="text-sm text-gray-300">{label}</div>
@@ -15,7 +16,7 @@ function renderItem(label: string, value: number) {
 }
 export default function Basic() {
   const { isLoading, data: launchpads } = useLaunchpadsStats()
-  const data = getLaunchpad(launchpads, launchpad!)
+  const data = getLaunchpad(launchpads || [], launchpad!)
   if (isLoading) {
     return <Loading />
   }
@@ -30,9 +31,9 @@ export default function Basic() {
           <CardTitle>{data.launchpad}</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-row flex-wrap gap-4 items-center">
-          {renderItem("Liquidity", data.liquidity)}
-          {renderItem("24h volume", data.stats24h.volume)}
-          {renderItem("24h traders", data.stats24h.traders)}
+          {renderItem("Liquidity", formatNumber(data.liquidity))}
+          {renderItem("24h volume", formatNumber(data.stats24h.volume))}
+          {renderItem("24h traders", formatNumber(data.stats24h.traders))}
         </CardContent>
       </Card>
     </div>

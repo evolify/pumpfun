@@ -23,7 +23,7 @@ async function getLaunchpadDetail(url: string) {
 }
 
 export function useLaunchpadsStats() {
-  const { data, isLoading, error, mutate } = useSWR(
+  const { data, isLoading, error, mutate } = useSWR<LaunchpadsInfo[]>(
     LaunchpadsStatsUrl,
     getLaunchpadsStats
   )

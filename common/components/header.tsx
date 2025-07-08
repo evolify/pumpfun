@@ -57,10 +57,11 @@ console.log(menus)
 
 interface Props {
   title?: string
+  subTitle?: string
 }
 
 export default function Header(props: Props) {
-  const { title = "Dumpfun" } = props
+  const { title = "Dumpfun", subTitle } = props
   return (
     <header className="flex flex-row items-center h-14 px-4">
       <div className="mr-4 md:hidden flex flex-row items-center">
@@ -75,17 +76,17 @@ export default function Header(props: Props) {
                 <li
                   key={item.label}
                   className={cn(
-                    "flex flex-col px-6 py-4",
+                    "flex flex-col px-6",
                     item.children && "text-sm text-gray-400"
                   )}
                 >
                   {item.children ? (
                     <>
-                      <span>{item.label}</span>
-                      <ul className="w-50">
+                      <ul className="w-50 py-2">
+                        <span>{item.label}</span>
                         {item.children.map(t => (
                           <a key={t.label} href={t.value} target="_blank">
-                            <span className="flex flex-row items-center justify-between text-md text-gray-200">
+                            <span className="h-9 flex flex-row items-center justify-between text-md text-gray-200">
                               {t.label}
                               <MoveUpRight style={{ width: 12, height: 12 }} />
                             </span>
@@ -95,7 +96,7 @@ export default function Header(props: Props) {
                     </>
                   ) : (
                     <a href={item.value} target="_blank">
-                      <span className="flex flex-row items-center text-md text-gray-200">
+                      <span className="h-9 flex flex-row items-center text-md text-gray-200">
                         {item.label}
                         <MoveUpRight
                           style={{ width: 12, height: 12 }}
@@ -111,6 +112,9 @@ export default function Header(props: Props) {
         </Sheet>
       </div>
       <div className="text-xl font-bold">{title}</div>
+      {subTitle && (
+        <div className="ml-auto text-sm text-blue-100">{subTitle}</div>
+      )}
 
       <NavigationMenu
         className="ml-auto hidden md:block"

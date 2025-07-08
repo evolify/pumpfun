@@ -78,6 +78,6 @@ export function getGmgnbotLink(addr = "") {
 }
 
 export function getLaunchpadLink(launchpad: Launchpad) {
-  const path = isDev ? "/app/launchpad/index.html" : "/launchpad"
+  const path = `/launchpad${isDev ? "/index.html" : ""}`
   return `${host}${path}?launchpad=${launchpad}`
 }
