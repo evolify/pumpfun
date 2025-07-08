@@ -2,20 +2,25 @@ import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 import path, { resolve } from "path"
 import tailwindcss from "@tailwindcss/vite"
+import glob from "fast-glob"
 
-function getInput(...dirs: string[]) {
+const appDir = resolve(__dirname, "app")
+
+function getInput() {
+  const dirs = glob.sync(`${appDir}/**/index.html`, { cwd: appDir })
   const input: Record<string, string> = {
     main: "app/index.html",
   }
   dirs.forEach(t => {
-    input[t] = `app/${t}/index.html`
+    const name = path.relative(appDir, path.dirname(t)) || "main"
+    input[name] = t
   })
   return input
 }
 
 // https://vite.dev/config/
 export default defineConfig({
-  root: "app/",
+  root: "app",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -24,8 +29,9 @@ export default defineConfig({
   },
   build: {
     outDir: resolve("dist"),
+    emptyOutDir: true,
     rollupOptions: {
-      input: getInput("launchpad"),
+      input: getInput(),
     },
   },
 })

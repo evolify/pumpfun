@@ -2,6 +2,8 @@
 @import "tw-animate-css";
 @import "./launchpad.css";
 
+@source "../components";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
