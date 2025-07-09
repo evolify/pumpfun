@@ -44,11 +44,11 @@ export function Liquidity({ data }: Props) {
     }))
   }, [data])
   return (
-    <Card className="flex flex-col flex-1 gap-0">
-      <CardHeader className="items-center pb-0 h-9">
+    <Card className="flex flex-col flex-1 gap-0 min-w-[300px] py-4">
+      <CardHeader className="flex flex-row justify-between items-center pb-0 px-4 h-9">
         <CardTitle>Liquidity</CardTitle>
       </CardHeader>
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1 pb-0 px-4">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square max-h-[250px]"

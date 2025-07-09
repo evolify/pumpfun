@@ -15,7 +15,7 @@ export default function Percent(props: Props) {
         className
       )}
     >
-      {value.toFixed(2)}%
+      {value.toFixed(1)}%
     </span>
   )
 }

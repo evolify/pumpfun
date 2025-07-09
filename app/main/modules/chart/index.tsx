@@ -12,7 +12,7 @@ export default function Chart({ data }: Props) {
   return (
     <div className="mt-4">
       <Stats data={data} />
-      <div className="flex flex-row gap-4 mt-4">
+      <div className="flex flex-row flex-wrap gap-4 mt-4">
         <Liquidity data={data} />
         <Volume data={data} />
         <Traders data={data} />

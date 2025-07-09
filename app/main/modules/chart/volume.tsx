@@ -54,14 +54,14 @@ export function Volume({ data }: Props) {
     }))
   }, [data, duration])
   return (
-    <Card className="flex flex-col flex-1 gap-0">
-      <CardHeader className="items-center pb-0 h-9">
+    <Card className="flex flex-col flex-1 gap-0 min-w-[300px] py-4">
+      <CardHeader className="items-center px-4 pb-0 h-9 flex flex-row justify-between">
         <CardTitle>Volumn</CardTitle>
         <CardAction>
           <DurationFilter value={duration} onChange={onChange} />
         </CardAction>
       </CardHeader>
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1 px-4 pb-0">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square max-h-[250px]"

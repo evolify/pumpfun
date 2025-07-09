@@ -97,7 +97,12 @@ export default function List() {
   return (
     <div>
       <div className="mb-4 flex items-center gap-2">
-        <ToggleGroup type="single" value={duration} onValueChange={onChange}>
+        <ToggleGroup
+          type="single"
+          value={duration}
+          onValueChange={onChange}
+          variant="outline"
+        >
           <ToggleGroupItem value="5m">5m</ToggleGroupItem>
           <ToggleGroupItem value="1h">1h</ToggleGroupItem>
           <ToggleGroupItem value="6h">6h</ToggleGroupItem>
@@ -109,6 +114,7 @@ export default function List() {
           type="single"
           value={layout}
           onValueChange={val => setLayout(val as "grid" | "table")}
+          variant="outline"
         >
           <ToggleGroupItem value="grid">
             <LayoutGrid />

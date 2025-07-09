@@ -41,7 +41,7 @@ export default function Item({ data }: Props) {
   return (
     <GlowCard customSize className="px-0 py-0 gap-0">
       <div className="flex flex-row items-center gap-2 px-3 py-2">
-        <img src={data.baseAsset.icon} className="w-8 h-8 rounded-sm" />
+        <img src={data.baseAsset.icon} className="w-8 h-8 rounded-[6px]" />
         <div className="flex-1">
           <div className="flex flex-row items-center gap-4">
             <span> {data.baseAsset.symbol} </span>
@@ -57,7 +57,7 @@ export default function Item({ data }: Props) {
         </div>
         <div className="self-start px-2">{formatTime(data.createdAt)}</div>
       </div>
-      <div className="p-3 flex flex-col gap-1">
+      <div className="px-3 pb-2 flex flex-col gap-1">
         <div className="flex flex-row items-center gap-2">
           <div>
             <span className="text-sm text-gray-400">MC</span>

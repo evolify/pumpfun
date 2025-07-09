@@ -1,8 +1,5 @@
-"use client"
-
 import { TrendingUp } from "lucide-react"
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 import {
   Card,
@@ -26,6 +23,13 @@ import {
 } from "@/types"
 import { useMemo, useState } from "react"
 import { getLaunchpad, getLaunchpadStats } from "@/utils"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const chartConfig = {
   pump_fun: {
@@ -55,6 +59,29 @@ interface Props {
 }
 
 const durations: Duration[] = ["24h", "6h", "1h", "5m"]
+
+const options = [
+  {
+    label: "Market Share",
+    value: "marketShare",
+  },
+  {
+    label: "Volume",
+    value: "volume",
+  },
+  {
+    label: "Traders",
+    value: "traders",
+  },
+  {
+    label: "Mints",
+    value: "mints",
+  },
+  {
+    label: "Graduates",
+    value: "graduates",
+  },
+]
 
 export default function Stats({ data }: Props) {
   const [type, setType] = useState<keyof LaunchpadsStats>("marketShare")
@@ -96,19 +123,21 @@ export default function Stats({ data }: Props) {
         </CardTitle>
         <CardDescription>24h / 6h / 1h / 5m</CardDescription>
         <CardAction className="col-start-2">
-          <ToggleGroup
-            className="min-w-[500px]"
-            variant="outline"
-            type="single"
+          <Select
             value={type}
             onValueChange={value => setType(value as keyof LaunchpadsStats)}
           >
-            <ToggleGroupItem value="marketShare">Market Share</ToggleGroupItem>
-            <ToggleGroupItem value="volume">Volume</ToggleGroupItem>
-            <ToggleGroupItem value="traders">Traders</ToggleGroupItem>
-            <ToggleGroupItem value="mints">Mints</ToggleGroupItem>
-            <ToggleGroupItem value="graduates">Graduates</ToggleGroupItem>
-          </ToggleGroup>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectContent>
+              {options.map(option => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </CardAction>
       </CardHeader>
       <CardContent>
