@@ -1,7 +1,6 @@
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
@@ -13,10 +12,12 @@ import {
   getPepeboostLink,
 } from "@/utils"
 import { NavigationMenuItem } from "@radix-ui/react-navigation-menu"
-import { MenuIcon, MoveUpRight } from "lucide-react"
+import { MenuIcon } from "lucide-react"
 import { LaunchpadConfig } from "@/constants"
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./ui/sheet"
 import { cn } from "@/lib/utils"
+import { TrackLabel } from "@/utils/track"
+import { NavLink } from "./nav-link"
 
 const menus = [
   {
@@ -24,6 +25,7 @@ const menus = [
     children: Object.values(LaunchpadConfig).map(t => ({
       label: t.name,
       value: t.url,
+      trackLabel: TrackLabel.LAUNCHPAD,
     })),
   },
   {
@@ -32,38 +34,42 @@ const menus = [
       {
         label: "GMGN Bot",
         value: getGmgnbotLink(),
+        trackLabel: TrackLabel.GMGN_BOT,
       },
       {
         label: "Bonk Bot",
         value: getBonkbotLink(),
+        trackLabel: TrackLabel.BONK_BOT,
       },
       {
         label: "Pepeboost Bot",
         value: getPepeboostLink(),
+        trackLabel: TrackLabel.PEPEBOOST_BOT,
       },
     ],
   },
   {
     label: "Axiom",
     value: getAxiomLink(),
+    trackLabel: TrackLabel.AXIOM,
   },
   {
     label: "GMGM",
     value: getGmgnLink(),
+    trackLabel: TrackLabel.GMGN,
   },
 ]
 
-console.log(menus)
-
 interface Props {
   title?: string
-  subTitle?: string
+  subTitle?: React.ReactNode
 }
 
 export default function Header(props: Props) {
   const { title = "Dumpfun", subTitle } = props
   return (
     <header className="flex flex-row items-center h-14 px-4">
+      {/* sidebar menu */}
       <div className="mr-4 md:hidden flex flex-row items-center">
         <Sheet>
           <SheetTrigger>
@@ -85,25 +91,21 @@ export default function Header(props: Props) {
                       <ul className="w-50 py-2">
                         <span>{item.label}</span>
                         {item.children.map(t => (
-                          <a key={t.label} href={t.value} target="_blank">
-                            <span className="h-9 flex flex-row items-center justify-between text-md text-gray-200">
-                              {t.label}
-                              <MoveUpRight style={{ width: 12, height: 12 }} />
-                            </span>
-                          </a>
+                          <NavLink
+                            key={t.label}
+                            label={t.label}
+                            value={t.value}
+                            trackLabel={t.trackLabel}
+                          />
                         ))}
                       </ul>
                     </>
                   ) : (
-                    <a href={item.value} target="_blank">
-                      <span className="h-9 flex flex-row items-center text-md text-gray-200">
-                        {item.label}
-                        <MoveUpRight
-                          style={{ width: 12, height: 12 }}
-                          className="ml-1"
-                        />
-                      </span>
-                    </a>
+                    <NavLink
+                      label={item.label}
+                      value={item.value}
+                      trackLabel={item.trackLabel}
+                    />
                   )}
                 </li>
               ))}
@@ -116,6 +118,7 @@ export default function Header(props: Props) {
         <div className="ml-auto text-sm text-blue-100">{subTitle}</div>
       )}
 
+      {/* top menu */}
       <NavigationMenu
         className="ml-auto hidden md:block"
         orientation="vertical"
@@ -129,30 +132,22 @@ export default function Header(props: Props) {
                   <NavigationMenuContent>
                     <div className="w-50">
                       {item.children.map(t => (
-                        <NavigationMenuLink
+                        <NavLink
                           key={t.label}
-                          href={t.value}
-                          target="_blank"
-                        >
-                          <span className="flex flex-row items-center justify-between">
-                            {t.label}
-                            <MoveUpRight style={{ width: 12, height: 12 }} />
-                          </span>
-                        </NavigationMenuLink>
+                          label={t.label}
+                          value={t.value}
+                          trackLabel={t.trackLabel}
+                        />
                       ))}
                     </div>
                   </NavigationMenuContent>
                 </>
               ) : (
-                <NavigationMenuLink href={item.value} target="_blank">
-                  <span className="flex flex-row items-center">
-                    {item.label}
-                    <MoveUpRight
-                      style={{ width: 12, height: 12 }}
-                      className="ml-1"
-                    />
-                  </span>
-                </NavigationMenuLink>
+                <NavLink
+                  label={item.label}
+                  value={item.value}
+                  trackLabel={item.trackLabel}
+                />
               )}
             </NavigationMenuItem>
           ))}

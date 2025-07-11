@@ -6,34 +6,17 @@ import type {
   PoolStats,
   TokenInfo,
 } from "@/types"
-import { createRoot } from "react-dom/client"
-import { toast } from "sonner"
 
-export const isDev = import.meta.env.DEV
+export const isDev = process.env.NODE_ENV === "development"
+
 const host = isDev ? "http://localhost:5173" : "https://dumpfun.vercel.app"
-
-export async function copy(text: string) {
-  try {
-    await navigator.clipboard.writeText(text)
-    toast.success("Copied to clipboard")
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-export function getQuery<T>(key: string, defaultValue?: T) {
-  const urlParams = new URLSearchParams(window.location.search)
-  return (urlParams.get(key) as T) || defaultValue
-}
-
-export function render(children: React.ReactNode, el = "#app") {
-  const container = document.querySelector(el)
-  const root = createRoot(container!)
-  root.render(children)
-}
 
 export function fetcher(url: string, init?: RequestInit) {
   return fetch(url, init).then(res => res.json())
+}
+
+export function getStats(data: LaunchpadsInfo, duration: Duration) {
+  return data[`stats${duration}`] as LaunchpadsStats
 }
 
 export function getLaunchpad(data: LaunchpadsInfo[], launchpad: Launchpad) {
@@ -78,6 +61,5 @@ export function getGmgnbotLink(addr = "") {
 }
 
 export function getLaunchpadLink(launchpad: Launchpad) {
-  const path = `/launchpad${isDev ? "/index.html" : ""}`
-  return `${host}${path}?launchpad=${launchpad}`
+  return `/launchpad?launchpad=${launchpad}`
 }

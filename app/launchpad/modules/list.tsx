@@ -1,3 +1,4 @@
+"use client"
 import { Card } from "@/components/ui/card"
 import {
   Table,
@@ -13,12 +14,22 @@ import { useDuration } from "@/hooks/duration"
 import { launchpad } from "../utils"
 import Loading from "@/components/loading"
 import { formatNumber, formatTime } from "@/utils/format"
-import { getTokenStats } from "@/utils"
+import { getAxiomLink, getGmgnLink, getTokenStats } from "@/utils"
 import Item from "./item"
 import { LayoutGrid, Rows3 } from "lucide-react"
 import { useState } from "react"
 import type { Duration, PoolInfo } from "@/types"
 import Empty from "@/components/empty"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button"
+import { NavLink } from "@/components/nav-link"
+import { TrackLabel } from "@/utils/track"
 
 function renderGrid(data: PoolInfo[]) {
   return (
@@ -34,7 +45,7 @@ function renderTable(data: PoolInfo[], duration: Duration) {
   return (
     <Card className="p-0">
       <Table>
-        <TableHeader>
+        <TableHeader className="sticky top-0 bg-background">
           <TableRow className="text-sm text-gray-400">
             <TableHead>Name / Age</TableHead>
             <TableHead>Market Cap</TableHead>
@@ -43,6 +54,7 @@ function renderTable(data: PoolInfo[], duration: Duration) {
             <TableHead>{duration} Volume</TableHead>
             <TableHead>Buys / Sells</TableHead>
             <TableHead>Traders</TableHead>
+            <TableHead></TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -72,6 +84,32 @@ function renderTable(data: PoolInfo[], duration: Duration) {
                   <div>{formatNumber(stats.numSells)}</div>
                 </TableCell>
                 <TableCell>{formatNumber(stats.numTraders)}</TableCell>
+                <TableCell>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline">Trade</Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56" align="start">
+                      <DropdownMenuItem className="p-0">
+                        <NavLink
+                          className="w-full"
+                          label="Axiom"
+                          value={getAxiomLink(item.id)}
+                          trackLabel={TrackLabel.AXIOM}
+                        />
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem className="p-0">
+                        <NavLink
+                          className="w-full"
+                          label="Gmgn"
+                          value={getGmgnLink(item.id)}
+                          trackLabel={TrackLabel.GMGN}
+                        />
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
               </TableRow>
             )
           })}

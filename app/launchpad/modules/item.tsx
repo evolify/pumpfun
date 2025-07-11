@@ -1,11 +1,13 @@
 import Percent from "@/components/percent"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { GlowCard } from "@/components/ui/spotlight-card"
 import { Durations } from "@/hooks/duration"
 import type { PoolInfo, PoolStats, TokenInfo } from "@/types"
-import { copy, getAxiomLink, getGmgnLink, getTokenStats } from "@/utils"
+import { getAxiomLink, getGmgnLink, getTokenStats } from "@/utils"
+import { copy } from "@/utils/client"
 import { formatAddress, formatNumber, formatTime } from "@/utils/format"
+import { click, TrackLabel } from "@/utils/track"
 import { Copy, Twitter } from "lucide-react"
 
 interface Props {
@@ -21,7 +23,7 @@ function renderDurationValue(
     const stat = getTokenStats(token, t)
     if (stat?.[key]) {
       return (
-        <div className="flex flex-row items-center gap-1">
+        <div key={t} className="flex flex-row items-center gap-1">
           <span className="text-sm text-gray-400">{t}</span>
           {render(stat[key])}
         </div>
@@ -35,11 +37,12 @@ export default function Item({ data }: Props) {
   function copyAddr() {
     copy(baseAsset.id)
   }
-  function to(link: string) {
+  function to(link: string, label: TrackLabel) {
+    click(label)
     window.open(link)
   }
   return (
-    <GlowCard customSize className="px-0 py-0 gap-0">
+    <Card className="px-0 py-0 gap-0">
       <div className="flex flex-row items-center gap-2 px-3 py-2">
         <img src={data.baseAsset.icon} className="w-8 h-8 rounded-[6px]" />
         <div className="flex-1">
@@ -99,7 +102,7 @@ export default function Item({ data }: Props) {
           <Button
             variant="secondary"
             size="sm"
-            onClick={() => to(baseAsset.twitter)}
+            onClick={() => to(baseAsset.twitter, TrackLabel.TWITTER)}
           >
             <Twitter className="w-4 h-4 text-blue-500" />
           </Button>
@@ -109,18 +112,18 @@ export default function Item({ data }: Props) {
           variant="secondary"
           size="sm"
           className="ml-auto"
-          onClick={() => to(getGmgnLink(baseAsset.id))}
+          onClick={() => to(getGmgnLink(baseAsset.id), TrackLabel.GMGN)}
         >
           GMGN
         </Button>
         <Button
           variant="secondary"
           size="sm"
-          onClick={() => to(getAxiomLink(baseAsset.id))}
+          onClick={() => to(getAxiomLink(baseAsset.id), TrackLabel.AXIOM)}
         >
           Axiom
         </Button>
       </div>
-    </GlowCard>
+    </Card>
   )
 }
