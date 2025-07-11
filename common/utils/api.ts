@@ -24,6 +24,8 @@ const options = {
   dispatcher: isServer && proxy ? new ProxyAgent(proxy) : undefined,
 }
 
+console.log("---- proxy ----", proxy, options.dispatcher)
+
 export async function getLaunchpadsStats() {
   const res = await fetch(LaunchpadsStatsUrl, options)
   const data = await res.json()
