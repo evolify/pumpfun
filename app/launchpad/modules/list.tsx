@@ -94,7 +94,7 @@ function renderTable(data: PoolInfo[], duration: Duration) {
                         <NavLink
                           className="w-full"
                           label="Axiom"
-                          value={getAxiomLink(item.id)}
+                          value={getAxiomLink(item.baseAsset.id)}
                           trackLabel={TrackLabel.AXIOM}
                         />
                       </DropdownMenuItem>
@@ -103,7 +103,7 @@ function renderTable(data: PoolInfo[], duration: Duration) {
                         <NavLink
                           className="w-full"
                           label="Gmgn"
-                          value={getGmgnLink(item.id)}
+                          value={getGmgnLink(item.baseAsset.id)}
                           trackLabel={TrackLabel.GMGN}
                         />
                       </DropdownMenuItem>
