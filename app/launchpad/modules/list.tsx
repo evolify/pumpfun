@@ -16,7 +16,7 @@ import Loading from "@/components/loading"
 import { formatNumber, formatTime } from "@/utils/format"
 import { getAxiomLink, getGmgnLink, getTokenStats } from "@/utils"
 import Item from "./item"
-import { LayoutGrid, Rows3 } from "lucide-react"
+import { LayoutGrid, RotateCcw, Rows3 } from "lucide-react"
 import { useState } from "react"
 import type { Duration, PoolInfo } from "@/types"
 import Empty from "@/components/empty"
@@ -122,19 +122,32 @@ function renderTable(data: PoolInfo[], duration: Duration) {
 export default function List() {
   const { duration, onChange } = useDuration("24h")
   const [layout, setLayout] = useState<"grid" | "table">("grid")
-  const { isLoading, data } = useLaunchpadDetail(launchpad!, duration)
+  const { isLoading, data, mutate } = useLaunchpadDetail(launchpad!, duration)
 
-  if (isLoading) {
-    return <Loading />
+
+  function refresh() {
+    mutate(data)
   }
 
-  if (!data) {
-    return <Empty />
+  function renderContent() {
+    if (isLoading) {
+      return <Loading />
+    }
+
+    if (!data) {
+      return <Empty />
+    }
+
+    if (layout === "grid") {
+      return renderGrid(data)
+    }
+    
+    return renderTable(data, duration)
   }
 
   return (
     <div>
-      <div className="mb-4 flex items-center gap-2">
+      <div className="mb-4 flex items-center gap-4">
         <ToggleGroup
           type="single"
           value={duration}
@@ -161,9 +174,12 @@ export default function List() {
             <Rows3 />
           </ToggleGroupItem>
         </ToggleGroup>
-      </div>
 
-      {layout === "grid" ? renderGrid(data) : renderTable(data, duration)}
+        <Button onClick={refresh} variant="outline">
+          <RotateCcw />
+        </Button>
+      </div>
+      { renderContent() }
     </div>
   )
 }
